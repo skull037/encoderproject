@@ -34,13 +34,10 @@ var CaesarCipher = {
 $("input[type='radio']").click(function() {
 $("input:checked").prop('checked',false);
 $(this).prop('checked',true);
-checkClicked();
-});
 
 //checks which radio is active
-function checkClicked(){
-if($("input:checked").val() == "echo"){
   //echos input if echo radio is pressed down
+  if($("input:checked").val() == "echo"){
   $("#inputArea").keydown(function(){
          $("#textArea").append(String.fromCharCode(event.which));
     });
@@ -56,12 +53,12 @@ else if($("input:checked").val() == "Caesar cipher"){
 //message that will be split and encoded
 var MessageToEncode = String.fromCharCode(event.which);
 var Encoding = MessageToEncode.split('');
-var Encoded;
-console.log(Encoding[0]);
-Encoded = CaesarCipher[Encoding[0]];
-console.log();
-         $("#textArea").append( Encoded );
+MessageToEncode = CaesarCipher[Encoding[0]];
+         $("#textArea").append( MessageToEncode );
     });
 
   }
-}
+  else{
+    console.log("error");
+  }
+});
