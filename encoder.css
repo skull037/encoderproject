@@ -1,7 +1,7 @@
 #textArea {
   width: 700px;
   height: 150px;
-  font-family: 'Nunito', sans-serif;
+  font-family: arial;
   font-size: 36px;
 }
 
@@ -18,14 +18,14 @@
 
 #translationChoices {
   margin: 10px;
-  font-family: sans-serif;
+  font-family: arial;
   font-size: 18px;
 }
 
 #translationArea {
   width: 700px;
   height: 150px;
-  font-family: 'Nunito', sans-serif;
+  font-family: arial;
   font-size: 36px;
 }
 
