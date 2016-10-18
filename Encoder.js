@@ -60,9 +60,6 @@ var CaesarCipher = {
   "":"",
   " ":" "
 }
-//where all the Heiroglyphics are stored
-var HeiroglyphicImage = new Image();
-
 //Heiroglyphics converter object
 var HeiroglyphicCipher = {
   "A":"<img src='images/Heiroglyphics/a.gif'>",
@@ -124,23 +121,21 @@ var RuneCipher = {
   "":"",
   " ":" "
 }
+
 //event Handler
 $("input[type='radio']").click(function() {
 $("input:checked").prop('checked',false);
 $(this).prop('checked',true);
 
+$("#inputText").val("");
 $("#textArea").text("");
-$("#inputText").text("");
-
-console.log($("input:checked").val());
       });
 //checks which radio is active
 //echos input if  the echo radio is true
 $("#inputArea").keydown(function(){
   if($("input:checked").val() == "echo"){
-
+    //appends the letter pressed down to the text area if the echo radio is true
          $("#textArea").append(String.fromCharCode(event.which));
-
 }
 //will append Heiroglyphics if the radio is true
 else if($("input:checked").val() == "Heiroglyphics"){
@@ -156,7 +151,11 @@ else if($("input:checked").val() == "Runes"){
     MessageToEncode = RuneCipher[Encoding[0]];
              $("#textArea").append( MessageToEncode );
 }
-//translates message into the cipher if the radio is true
+else if($("input:checked").val() == "Keycode"){
+  //appends the letter pressed down to the text area if the echo radio is true
+       $("#textArea").append(event.which + " ");
+}
+//translates message into the Caesar cipher if the radio is true
 else if($("input:checked").val() == "Caesar cipher"){
 //message that will be split and encoded
 var MessageToEncode = String.fromCharCode(event.which);
@@ -167,8 +166,9 @@ MessageToEncode = CaesarCipher[Encoding[0]];
   else{
     console.log("fatal error");
   }
+
 });
-//decodes
+//decodes ffrom caesar cipher to english
 $("#translationInputArea").keydown(function(){
   var MessageToEncode = String.fromCharCode(event.which);
   var Encoding = MessageToEncode.split('');
